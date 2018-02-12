@@ -1,0 +1,22 @@
+# search.ml
+# Define your search terms here, using the "search" key as many times as
+# needed.
+#
+# Example:
+#
+# [[search]]
+#     topic = "Bitcoin"
+#     query = "bitcoin OR BTC"
+#
+
+[[search]]
+    topic = "Bitcoin"
+    query = "bitcoin OR BTC OR #bitcoin OR #BTC -filter:retweets"
+
+# [[search]]
+#     topic = "Ethereum"
+#     query = "ethereum OR ETH OR #ethereum OR #ETH -filter:retweets"
+#
+# [[search]]
+#     topic = "Ripple"
+#     query = "ripple or XRP"

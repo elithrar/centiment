@@ -1,0 +1,56 @@
+[
+  {
+    "type": "INTEGER",
+    "name": "count",
+    "mode": "NULLABLE",
+    "description": "The total count of tweets aggregated"
+  },
+  {
+    "type": "TIMESTAMP",
+    "name": "fetchedAt",
+    "mode": "NULLABLE",
+    "description": "The timestamp at which the Sentiment was aggregated"
+  },
+  {
+    "type": "INTEGER",
+    "name": "lastSeenID",
+    "mode": "NULLABLE",
+    "description": "The most recent status ID processed."
+  },
+  {
+    "type": "FLOAT",
+    "name": "score",
+    "mode": "NULLABLE",
+    "description": "The averaged (mean) sentiment score of all tweets processed"
+  },
+  {
+    "type": "FLOAT",
+    "name": "stdDev",
+    "mode": "NULLABLE",
+    "description": "The standard deviation (sample) of the score for all tweets processed"
+  },
+  {
+    "type": "FLOAT",
+    "name": "variance",
+    "mode": "NULLABLE",
+    "description": "The variance (sample) of the score for all tweets processed"
+  },
+  {
+    "type": "STRING",
+    "name": "query",
+    "mode": "NULLABLE",
+    "description": "The search query made against Twitter"
+  },
+  {
+    "type": "STRING",
+    "name": "topic",
+    "mode": "NULLABLE",
+    "description": "The topic (description) of the search"
+  },
+  {
+    "type": "STRING",
+    "name": "id",
+    "mode": "NULLABLE",
+    "description": "The ID from the original data store (e.g. Firestore)"
+  }
+]

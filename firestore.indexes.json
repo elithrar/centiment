@@ -1,0 +1,30 @@
+{
+  "indexes": [
+    {
+      "collectionId": "sentiments",
+      "fields": [
+        {
+          "fieldPath": "topic",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "fetchedAt",
+          "mode": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "sentiments",
+      "fields": [
+        {
+          "fieldPath": "slug",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "fetchedAt",
+          "mode": "DESCENDING"
+        }
+      ]
+    }
+  ]
+}

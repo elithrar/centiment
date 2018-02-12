@@ -1,0 +1,36 @@
+runtime: go
+env: flex
+
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 1
+  disk_size_gb: 10
+
+liveness_check:
+  path: "/health/alive"
+  check_interval_sec: 6
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
+
+readiness_check:
+  path: "/health/ready"
+  check_interval_sec: 5
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
+  app_start_timeout_sec: 60
+
+env_variables:
+  CENTIMENT_HOSTNAME: "centiment.questionable.services"
+  CENTIMENT_MAX_TWEETS: 250
+  CENTIMENT_ANALYSIS_WORKERS: 5
+  CENTIMENT_PROJECT_ID: "your-project-id-here"
+  CENTIMENT_RUN_INTERVAL: 10m
+  CENTIMENT_SHUTDOWN_WAIT: 15s
+  TWITTER_ACCESS_TOKEN: ""
+  TWITTER_ACCESS_SECRET: ""
+  TWITTER_CONSUMER_KEY: ""
+  TWITTER_CONSUMER_SECRET: ""
