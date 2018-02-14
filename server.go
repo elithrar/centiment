@@ -65,6 +65,7 @@ func (ep *Endpoint) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// AddIndexEndpoints adds the entrypoint/index handlers to the given router.
 func AddIndexEndpoints(r *mux.Router, env *Env) *mux.Router {
 	h := func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "%s\n", env.Hostname)
@@ -74,6 +75,8 @@ func AddIndexEndpoints(r *mux.Router, env *Env) *mux.Router {
 	return r
 }
 
+// AddSentimentEndpoints adds the sentiment endpoints to the given router, and
+// returns an instance of the Subrouter.
 func AddSentimentEndpoints(r *mux.Router, env *Env) *mux.Router {
 	s := r.PathPrefix("/sentiments").Subrouter()
 	s.Handle("/{topicSlug}", &Endpoint{Env: env, Handler: sentimentHandler})
@@ -89,6 +92,8 @@ func AddSentimentEndpoints(r *mux.Router, env *Env) *mux.Router {
 	return s
 }
 
+// AddMetricEndpoints adds the metric/debugging endpoints to the given router, and
+// returns an instance of the Subrouter.
 func AddMetricEndpoints(r *mux.Router, env *Env) *mux.Router {
 	m := r.PathPrefix("/metrics").Subrouter()
 	m.Handle("/{profile}", &Endpoint{Env: env, Handler: metricsHandler})
@@ -96,6 +101,8 @@ func AddMetricEndpoints(r *mux.Router, env *Env) *mux.Router {
 	return m
 }
 
+// AddHealthCheckEndpoints adds the health check endpoints to the given router, and
+// returns an instance of the Subrouter.
 func AddHealthCheckEndpoints(r *mux.Router, env *Env) *mux.Router {
 	// App Engine health checks.
 	h := r.PathPrefix("/health").Subrouter()
@@ -104,6 +111,7 @@ func AddHealthCheckEndpoints(r *mux.Router, env *Env) *mux.Router {
 	return h
 }
 
+// LogRequest logs each HTTP request, using the given logger.
 func LogRequest(logger log.Logger) func(http.Handler) http.Handler {
 	fn := func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -111,6 +119,7 @@ func LogRequest(logger log.Logger) func(http.Handler) http.Handler {
 			next.ServeHTTP(w, r)
 			logger.Log(
 				"method", r.Method,
+				"host", r.Host,
 				"url", r.URL.String(),
 				"ip", r.RemoteAddr,
 				"forwarded-ip", r.Header.Get("X-Forwarded-For"),
