@@ -1,6 +1,7 @@
 # 🤖 centiment
 
-[![GoDoc](https://godoc.org/github.com/elithrar/centiment?status.svg)](https://godoc.org/github.com/elithrar/centiment) [![Build Status](https://travis-ci.org/elithrar/centiment.svg?branch=master)](https://travis-ci.org/elithrar/centiment)
+[![GoDoc](https://godoc.org/github.com/elithrar/centiment?status.svg)](https://godoc.org/github.com/elithrar/centiment)
+[![CircleCI](https://circleci.com/gh/elithrar/centiment.svg?style=svg)](https://circleci.com/gh/elithrar/centiment)
 
 Centiment is a service that performs sentiment analysis of tweets using Google's [Natural Language APIs](https://cloud.google.com/natural-language/). It was designed with the goal of searching for cryptocurrency tweets, but can be used to analyze and aggregate sentiments for any search terms.
 
